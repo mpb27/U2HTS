@@ -295,7 +295,7 @@ inline uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id,
         buffer[0] = u2hts_get_max_tps();
         break;
       case U2HTS_HID_REPORT_TP_MS_THQA_CERT_ID:
-        memcpy(buffer, u2hts_ms_thqa_cert + 1 /* ignore report id */, reqlen);
+        memcpy(buffer, u2hts_ms_thqa_cert, reqlen);
         u2hts_usb_status = true;
         break;
       default:
