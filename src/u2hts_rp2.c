@@ -61,7 +61,7 @@ inline void u2hts_delay_us(uint32_t us) { sleep_us(us); }
 inline void u2hts_usb_init() { tud_init(BOARD_TUD_RHPORT); }
 
 #ifdef U2HTS_ENABLE_LED
-inline void u2hts_led_set(bool on) { gpio_put(PICO_DEFAULT_LED_PIN, on); }
+inline void u2hts_led_set(bool on) { gpio_put(PICO_DEFAULT_LED_PIN, !on); } // active-low LED
 #endif
 
 #ifdef U2HTS_ENABLE_PERSISTENT_CONFIG
