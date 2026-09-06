@@ -66,6 +66,7 @@ set(TOUCH_CONTROLLERS
     ${CMAKE_CURRENT_LIST_DIR}/u2hts_touch_controllers/cst8xx.c
     ${CMAKE_CURRENT_LIST_DIR}/u2hts_touch_controllers/chsc6540.c
     ${CMAKE_CURRENT_LIST_DIR}/u2hts_touch_controllers/goodix_normandy.c
+    ${CMAKE_CURRENT_LIST_DIR}/u2hts_touch_controllers/mxt1188s1.c
 )
 
 set(SOURCES 
@@ -124,6 +125,16 @@ target_link_libraries(U2HTS PUBLIC
 target_compile_options(U2HTS PRIVATE 
     -Wall
     -Wno-format
+)
+
+# Hardware pin assignments
+target_compile_definitions(U2HTS PRIVATE
+    PICO_DEFAULT_I2C=1           # Force i2c1 for GP6/GP7
+    PICO_DEFAULT_I2C_SDA_PIN=6   # GP6  -> i2c1 SDA
+    PICO_DEFAULT_I2C_SCL_PIN=7   # GP7  -> i2c1 SCL
+    U2HTS_TP_INT=27              # GP27 -> touch controller INT
+    U2HTS_TP_RST=26              # GP26 -> touch controller RST
+    PICO_DEFAULT_LED_PIN=9       # GP9  -> error/status LED
 )
 
 pico_add_linker_script_override_path(U2HTS ${CMAKE_CURRENT_LIST_DIR}/linker)
