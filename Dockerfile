@@ -23,5 +23,5 @@ RUN git clone --depth 1 --branch 2.3.0 --recursive https://github.com/raspberryp
 # Set working directory for volume-mounted source code
 WORKDIR /workspace
 
-# Build U2HTS firmware for RP2040 target by default
-CMD ["sh", "-c", "cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=MinSizeRel -DPICO_BOARD=pico && cmake --build build"]
+# Build U2HTS firmware for waveshare_rp2040_zero target by default
+CMD ["sh", "-c", "cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=MinSizeRel -DPICO_BOARD=waveshare_rp2040_zero -DU2HTS_ENABLE_LED=ON && cmake --build build"]
