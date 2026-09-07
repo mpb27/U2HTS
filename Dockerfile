@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 \
     && rm -rf /var/lib/apt/lists/*
 
-# Pre-install Raspberry Pi Pico SDK v2.2.0
+# Pre-install Raspberry Pi Pico SDK v2.3.0
 ENV PICO_SDK_PATH=/opt/pico-sdk
-RUN git clone --depth 1 --branch 2.2.0 --recursive https://github.com/raspberrypi/pico-sdk.git ${PICO_SDK_PATH}
+RUN git clone --depth 1 --branch 2.3.0 --recursive https://github.com/raspberrypi/pico-sdk.git ${PICO_SDK_PATH}
 
 # Set working directory for volume-mounted source code
 WORKDIR /workspace

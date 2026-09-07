@@ -28,6 +28,7 @@ set(PICO_BOARD pico CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
+message("Your Pico SDK version is: ${PICO_SDK_VERSION_STRING}")
 project(U2HTS C CXX ASM)
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/u2hts_core)
